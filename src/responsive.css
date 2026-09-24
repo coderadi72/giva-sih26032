@@ -1,0 +1,340 @@
+/* Mobile fixes for the state dashboard and public home page. */
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Use a real state-boundary map instead of the decorative placeholder shape. */
+.india-map {
+  background-color: transparent;
+}
+.india-map::before,
+.india-map-label,
+.map-dot,
+.map-caption {
+  display: none;
+}
+.india-map::after {
+  content: "Map: Wikimedia Commons • CC BY-SA 4.0";
+  position: absolute;
+  left: 8px;
+  bottom: 6px;
+  color: #607783;
+  font-size: 8px;
+  background: #ffffffd9;
+  padding: 2px 4px;
+}
+
+.district-explorer {
+  background: #fff;
+  border: 1px solid #d9e2e7;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  /* removed box-shadow */
+}
+.district-explorer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #2c4053;
+  color: #fff;
+}
+.district-explorer-head h3 {
+  margin: 4px 0 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+.district-explorer-head .eyebrow {
+  color: #dce7ec;
+}
+.district-explorer-head select {
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 10px;
+  color: #294557;
+  font-size: 11px;
+  max-width: 210px;
+}
+.district-status-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 11px 16px;
+  border-bottom: 1px solid #d9e2e7;
+  color: #526a77;
+  font-size: 11px;
+}
+.status-pill {
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.status-pill.procuring-state {
+  background: #dff3e7;
+  color: #087f4f;
+}
+.status-pill.reporting-state {
+  background: #dff0fb;
+  color: #176aa0;
+}
+.status-pill.state-profile-pending {
+  background: #fff1d2;
+  color: #976713;
+}
+.district-counts {
+  margin-left: auto;
+}
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin: 0 3px 0 9px;
+}
+.procuring-dot {
+  background: #ef6e4b;
+}
+.reporting-dot {
+  background: #76cfa8;
+}
+.not-reporting-dot {
+  background: #b9c4ce;
+}
+.district-map-card {
+  display: grid;
+  grid-template-columns: 34% 66%;
+  min-height: 240px;
+}
+.district-map-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #f3f6f8;
+  border-right: 1px solid #d9e2e7;
+}
+.district-map-visual img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  opacity: 0.34;
+  filter: saturate(0.65);
+}
+.district-map-visual span {
+  position: absolute;
+  max-width: 80%;
+  text-align: center;
+  color: #294b5a;
+  font-size: 15px;
+  font-weight: 800;
+}
+.district-map-visual small {
+  position: absolute;
+  bottom: 10px;
+  color: #66808b;
+  font-size: 9px;
+}
+.map-hotspot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #ef6e4b;
+  /* removed box-shadow */
+  cursor: pointer;
+  z-index: 2;
+}
+.map-hotspot:hover,
+.map-hotspot.active {
+  background: #087f4f;
+  /* removed box-shadow */
+  transform: translate(-50%, -50%) scale(1.25);
+}
+.district-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  align-content: center;
+  padding: 16px;
+}
+.district-tile {
+  min-height: 60px;
+  border: 1px solid #d6e0e5;
+  border-left: 4px solid #b9c4ce;
+  background: #f8fafb;
+  border-radius: 4px;
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+}
+.district-tile b,
+.district-tile small {
+  display: block;
+}
+.district-tile b {
+  color: #294b5a;
+  font-size: 10px;
+}
+.district-tile small {
+  color: #607783;
+  font-size: 9px;
+  margin-top: 6px;
+}
+.district-tile.procuring {
+  border-left-color: #ef6e4b;
+}
+.district-tile.reporting {
+  border-left-color: #76cfa8;
+}
+.district-tile.not-reporting {
+  border-left-color: #b9c4ce;
+}
+.district-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 9px 16px 12px;
+  border-top: 1px solid #d9e2e7;
+  color: #607783;
+  font-size: 9px;
+}
+
+@media (max-width: 700px) {
+  .district-explorer-head {
+    align-items: flex-start;
+    padding: 12px 14px;
+  }
+  .district-explorer-head h3 {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .district-explorer-head select {
+    width: 145px;
+  }
+  .district-status-row {
+    gap: 8px;
+    padding: 11px 14px;
+  }
+  .district-counts {
+    width: 100%;
+    margin-left: 0;
+  }
+  .district-map-card {
+    grid-template-columns: 1fr;
+  }
+  .district-map-visual {
+    min-height: 245px;
+    border-right: 0;
+    border-bottom: 1px solid #d9e2e7;
+  }
+  .district-map-visual img {
+    height: 220px;
+  }
+  .map-hotspot {
+    width: 13px;
+    height: 13px;
+  }
+  .district-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 12px 14px 16px;
+  }
+}
+
+/* Keep the map clean: state selection is available in the compact header control. */
+.state-list {
+  display: none;
+}
+.map-panel-body {
+  display: block;
+}
+.india-map {
+  min-height: 430px;
+  width: 100%;
+}
+.map-state-select {
+  background: #fff;
+  border: 1px solid #d6e0e5;
+  border-radius: 4px;
+  padding: 7px 9px;
+  color: #294557;
+  font-size: 10px;
+  max-width: 190px;
+}
+
+@media (max-width: 700px) {
+  .portal-graphics {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .state-map-panel {
+    width: 100%;
+    border-left: 0;
+    border-right: 0;
+  }
+  .map-panel-head {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .map-panel-head h3 {
+    font-size: 14px;
+    line-height: 1.35;
+    max-width: 215px;
+  }
+  .map-panel-head .eyebrow {
+    font-size: 9px;
+  }
+  .map-panel-head button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .map-panel-body {
+    min-height: 0;
+  }
+  .india-map {
+    min-height: 330px;
+  }
+  .india-map-label {
+    font-size: 20px;
+  }
+  .map-caption {
+    bottom: 10px;
+    white-space: nowrap;
+  }
+  .state-list {
+    padding: 12px 14px 16px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .state-list button {
+    padding: 8px 9px;
+    font-size: 10px;
+  }
+  .selected-state-summary {
+    padding: 14px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 10px;
+  }
+  .selected-state-summary > div:first-child {
+    grid-column: 1/-1;
+  }
+  .selected-state-summary b {
+    overflow-wrap: anywhere;
+  }
+  .kpi-grid,
+  .chart-grid-two {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,26 @@
+function translateVisibleText(root, hi){
+function App(){
+function LoginGuide({hi}){
+function FarmerRegistrationPortal({hi,setMode,onCe
+function CentreRegistrationPortal({hi,setMode}){
+function RegistrationLoginV2({hi,setMode}){
+function HomePage({onLogin,onDirectLogin,lang,setL
+function LeaderInfoPage({type,hi,onBack}){
+function PublicAssistant({hi}){
+function RegistrationLogin({hi,setMode,onHome}){
+function LoginPage({onLogin,onHome,lang,setLang,in
+function titleFor(page,hi=false){
+function hiLabel(label){
+function AIAssistant({setToast}){
+function Registration({setPage,setToast}){
+function ProcurementStatus({farmer,setToast}){
+function Dashboard({farmer,centres,setPage,setToas
+function SellCrop({farmer,centres,setToast,hi=fals
+function Centres({centres,setToast}){
+function Prices(){
+function Notifications({notifications}){
+function Payment({farmer}){
+function Feedback({setToast}){
+function PageTitle({title,sub}){const titles={"Sel
+function Info({label,value}){return <div className
+function Stat({icon:Icon,label,value,sub}){return 
