@@ -571,26 +571,20 @@ Current Wheat MSP:
       index.js
 */
 
-const frontendPath = path.join(
-  __dirname,
-  "../dist"
-);
+const frontendPath = path.join(__dirname, "../dist");
 
-app.use(
-  express.static(frontendPath)
-);
+app.use(express.static(frontendPath));
 
-/*
-  SPA fallback.
+app.use((req, res, next) => {
+  // Don't return the frontend for unknown API routes
+  if (req.path.startsWith("/api/")) {
+    return res.status(404).json({
+      message: "API endpoint not found"
+    });
+  }
 
-  IMPORTANT:
-  This must come AFTER all /api routes.
-*/
-
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(frontendPath, "index.html")
-  );
+  // Return React/Vite frontend for client-side routes
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 /* =========================================================
